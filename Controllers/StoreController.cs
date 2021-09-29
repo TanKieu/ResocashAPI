@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ResocashAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class StoreController : ControllerBase
     {
@@ -20,35 +20,124 @@ namespace ResocashAPI.Controllers
         }
 
         // GET: api/<StoreController>
-        [HttpGet]
+        [HttpGet("getAll")]
         public ActionResult<IEnumerable<Store>> GetAllStore()
         {
             return Ok(_context.Stores.ToList());
         }
 
         // GET api/<StoreController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("getByID/{id}")]
+        public Store GetById(String id)
         {
-            return "value";
+            var stores = _context.Stores.ToList();
+            var store = stores.FirstOrDefault(x => x.Id == id);
+            if (store == null)
+            {
+                return null;
+            }
+            if(store.StoreStatus == false)
+            {
+                return null;
+            }
+            return store;
+        }
+        [HttpGet("getByPhone/{storePhone}")]
+        public IEnumerable<Store> GetByStorePhone(String storePhone)
+        {
+            List<Store> list = new List<Store>();
+            var stores = _context.Stores.ToList();
+            foreach (var store in stores)
+            {
+                if (store.StorePhone == storePhone)
+                {
+                    list.Add(store);
+                }
+            }
+            if (list == null)
+            {
+                return null;
+            }
+            return list;
+        }
+
+        [HttpGet("getByStatus/{storeStatus}")]
+        public IEnumerable<Store> GetByStoreStatus(String storeStatus)
+        {
+            bool Status = System.Convert.ToBoolean(storeStatus);
+            List<Store> list = new List<Store>();
+            var stores = _context.Stores.ToList();
+            foreach (var store in stores)
+            {
+                if (store.StoreStatus == Status)
+                {
+                    list.Add(store);
+                }
+            }
+            if (list == null)
+            {
+                return null;
+            }
+            return list;
+        }
+
+        [HttpGet("getByBrandID/{brandid}")]
+        public IEnumerable<Store> GetByBrand(String brandid)
+        {
+            List<Store> listByBrand = new List<Store>();
+            var stores = _context.Stores.ToList();
+            foreach (var store in stores)
+            {
+                if (store.BrandId == brandid)
+                {
+                    listByBrand.Add(store);
+                }
+            }
+            if(listByBrand == null)
+            {
+                return null;
+            }
+            return listByBrand;
         }
 
         // POST api/<StoreController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("create")]
+        public void Post([FromBody] Models.Store store)
         {
+            if (store == null)
+            {
+                throw new ArgumentNullException();
+            }
+            _context.Stores.Add(store);
+            _context.SaveChanges();
         }
 
         // PUT api/<StoreController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("update/")]
+        public void Put([FromBody] Models.Store store)
         {
+            if (store == null)
+            {
+                throw new ArgumentNullException();
+            }
+            _context.Stores.Update(store);
+            _context.SaveChanges();
         }
 
         // DELETE api/<StoreController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpPut("/deleteByID/{id}")]
+        public void Delete(String id)
         {
+            var stores = _context.Stores.ToList();
+            foreach (var store in stores)
+            {
+                if(store.Id == id)
+                {
+                    store.StoreStatus = false;
+                    _context.SaveChanges();
+                }
+            }
         }
+
     }
 }

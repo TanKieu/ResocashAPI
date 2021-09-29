@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "Z:\\Semester7\\SWD\\ResocashAPI\\ResocashAPI\\ResocashAPI.csproj": {}
+    "C:\\Users\\chiss\\source\\repos\\ResocashAPI-master\\ResocashAPI.csproj": {}
   },
   "projects": {
-    "Z:\\Semester7\\SWD\\ResocashAPI\\ResocashAPI\\ResocashAPI.csproj": {
+    "C:\\Users\\chiss\\source\\repos\\ResocashAPI-master\\ResocashAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Z:\\Semester7\\SWD\\ResocashAPI\\ResocashAPI\\ResocashAPI.csproj",
+        "projectUniqueName": "C:\\Users\\chiss\\source\\repos\\ResocashAPI-master\\ResocashAPI.csproj",
         "projectName": "ResocashAPI",
-        "projectPath": "Z:\\Semester7\\SWD\\ResocashAPI\\ResocashAPI\\ResocashAPI.csproj",
-        "packagesPath": "C:\\Users\\winnh\\.nuget\\packages\\",
-        "outputPath": "Z:\\Semester7\\SWD\\ResocashAPI\\ResocashAPI\\obj\\",
+        "projectPath": "C:\\Users\\chiss\\source\\repos\\ResocashAPI-master\\ResocashAPI.csproj",
+        "packagesPath": "C:\\Users\\chiss\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chiss\\source\\repos\\ResocashAPI-master\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\winnh\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\chiss\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
