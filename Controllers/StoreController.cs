@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ResocashAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace ResocashAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize(Roles="admin,brand")]
     public class StoreController : ControllerBase
     {
         private readonly ResocashContext _context;

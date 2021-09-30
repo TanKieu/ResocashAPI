@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chiss\\source\\repos\\ResocashAPI-master\\ResocashAPI.csproj": {}
+    "Z:\\Semester7\\SWD\\ResocashAPI\\ResocashAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chiss\\source\\repos\\ResocashAPI-master\\ResocashAPI.csproj": {
+    "Z:\\Semester7\\SWD\\ResocashAPI\\ResocashAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chiss\\source\\repos\\ResocashAPI-master\\ResocashAPI.csproj",
+        "projectUniqueName": "Z:\\Semester7\\SWD\\ResocashAPI\\ResocashAPI.csproj",
         "projectName": "ResocashAPI",
-        "projectPath": "C:\\Users\\chiss\\source\\repos\\ResocashAPI-master\\ResocashAPI.csproj",
-        "packagesPath": "C:\\Users\\chiss\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chiss\\source\\repos\\ResocashAPI-master\\obj\\",
+        "projectPath": "Z:\\Semester7\\SWD\\ResocashAPI\\ResocashAPI.csproj",
+        "packagesPath": "C:\\Users\\winnh\\.nuget\\packages\\",
+        "outputPath": "Z:\\Semester7\\SWD\\ResocashAPI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\chiss\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\winnh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,6 +48,14 @@
               "target": "Package",
               "version": "[8.1.1, )"
             },
+            "FirebaseAdmin": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
             "Microsoft.AspNetCore.Proxy": {
               "target": "Package",
               "version": "[0.2.0, )"
@@ -65,6 +77,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.12.2, )"
             },
             "System.Runtime": {
               "target": "Package",
