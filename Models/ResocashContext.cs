@@ -26,6 +26,7 @@ namespace ResocashAPI.Models
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Prefer> Prefers { get; set; }
+        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Store> Stores { get; set; }
         public virtual DbSet<Wallet> Wallets { get; set; }
         public virtual DbSet<WalletTransaction> WalletTransactions { get; set; }
@@ -34,7 +35,7 @@ namespace ResocashAPI.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        // To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Data Source=swd-resocash.database.windows.net;Initial Catalog=Resocash;User ID=toor;Password=BA5EYcmcnLVrrZGrKparD2NYc");
             }
         }

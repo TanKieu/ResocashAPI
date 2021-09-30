@@ -3,7 +3,6 @@ using ResocashAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,24 +10,23 @@ namespace ResocashAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class StoreController : ControllerBase
+    public class StoresController : ControllerBase
     {
         private readonly ResocashContext _context;
-        public StoreController(ResocashContext context)
+        public StoresController(ResocashContext context)
         {
             _context = context;
         }
 
-        // GET: api/<StoreController>
-        [HttpGet("getAll")]
+        // GET: stores/<StoreController>
+        [HttpGet("")]
         public ActionResult<IEnumerable<Store>> GetAllStore()
         {
-
             return Ok(_context.Stores.ToList());
         }
 
-        // GET api/<StoreController>/5
-        [HttpGet("getByID/{id}")]
+        // GET stores/<StoreController>/5
+        [HttpGet("{id}")]
         public Store GetById(String id)
         {
             var stores = _context.Stores.ToList();
@@ -43,14 +41,14 @@ namespace ResocashAPI.Controllers
             }
             return store;
         }
-        [HttpGet("getByPhone/{storePhone}")]
+        [HttpGet("phone/{storePhone}")]
         public IEnumerable<Store> GetByStorePhone(String storePhone)
         {
             List<Store> list = new List<Store>();
             var stores = _context.Stores.ToList();
             foreach (var store in stores)
             {
-                if (store.StorePhone == storePhone)
+                if (store.StorePhone.Contains(storePhone))
                 {
                     list.Add(store);
                 }
@@ -62,7 +60,7 @@ namespace ResocashAPI.Controllers
             return list;
         }
 
-        [HttpGet("getByStatus/{storeStatus}")]
+        [HttpGet("status/{storeStatus}")]
         public IEnumerable<Store> GetByStoreStatus(String storeStatus)
         {
             bool Status = System.Convert.ToBoolean(storeStatus);
@@ -82,7 +80,7 @@ namespace ResocashAPI.Controllers
             return list;
         }
 
-        [HttpGet("getByBrandID/{brandid}")]
+        [HttpGet("brandid/{brandid}")]
         public IEnumerable<Store> GetByBrand(String brandid)
         {
             List<Store> listByBrand = new List<Store>();
@@ -101,8 +99,8 @@ namespace ResocashAPI.Controllers
             return listByBrand;
         }
 
-        // POST api/<StoreController>
-        [HttpPost("create")]
+        // POST stores/<StoreController>
+        [HttpPost("")]
         public void Post([FromBody] Models.Store store)
         {
             if (store == null)
@@ -113,8 +111,8 @@ namespace ResocashAPI.Controllers
             _context.SaveChanges();
         }
 
-        // PUT api/<StoreController>/5
-        [HttpPut("update/")]
+        // PUT stores/<StoreController>/5
+        [HttpPut("")]
         public void Put([FromBody] Models.Store store)
         {
             if (store == null)
@@ -125,8 +123,8 @@ namespace ResocashAPI.Controllers
             _context.SaveChanges();
         }
 
-        // DELETE api/<StoreController>/5
-        [HttpPut("/deleteByID/{id}")]
+        // DELETE stores/<StoreController>/5
+        [HttpDelete("{id}")]
         public void Delete(String id)
         {
             var stores = _context.Stores.ToList();
