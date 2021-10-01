@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ResocashAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace ResocashAPI.Controllers
 {
+    [Route("[controller]")]
+    [ApiController]
     public class LocationController : ControllerBase
     {
         private readonly ResocashContext _context;
@@ -14,28 +17,66 @@ namespace ResocashAPI.Controllers
         {
             _context = context;
         }
-        // GET: api/<StoreController>
-        [HttpGet("getAllLocation")]
-        public ActionResult<IEnumerable<Location>> GetAllCasher()
+        [HttpGet("")]
+        public ActionResult<IEnumerable<Location>> GetList()
         {
-            return Ok(_context.Locations.ToList());
+            return Ok(_context.Bookings.ToList());
         }
 
-        // GET api/<StoreController>/5
-        [HttpGet("getByIDLocation/{id}")]
-        public Location GetById(String id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Location>> GetById(String id)
         {
-            var Locations = _context.Locations.ToList();
-            var Location = Locations.FirstOrDefault(x => x.Id == id);
-            if (Location == null)
+            var location = await _context.Locations.FindAsync(id);
+            if (location == null)
             {
-                return null;
+                return NotFound();
             }
-            //if (casher.Status == false)
-            //{
-            //    return null;
-            //}
-            return Location;
+
+            return location;
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            return NoContent();
+        }
+
+        [HttpPost("")]
+        public async Task<ActionResult<Location>> Post(Location element)
+        {
+            _context.Locations.Add(element);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetList), new { id = element.Id }, element);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(string id, Location element)
+        {
+            if (!id.Equals(element.Id))
+            {
+                return BadRequest();
+            }
+            _context.Entry(element).State = EntityState.Modified;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ElementExist(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return NoContent();
+        }
+
+        private bool ElementExist(string id)
+        {
+            return _context.Locations.Any(e => e.Id == id);
         }
     }
 }

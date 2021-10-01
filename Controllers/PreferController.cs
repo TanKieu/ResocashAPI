@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ResocashAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace ResocashAPI.Controllers
 {
+    [Route("[controller]")]
+    [ApiController]
     public class PreferController : ControllerBase
     {
         private readonly ResocashContext _context;
@@ -14,28 +17,66 @@ namespace ResocashAPI.Controllers
         {
             _context = context;
         }
-        // GET: api/<StoreController>
-        [HttpGet("getAllPrefer")]
-        public ActionResult<IEnumerable<Prefer>> GetAllCasher()
+        [HttpGet("")]
+        public ActionResult<IEnumerable<Prefer>> GetList()
         {
             return Ok(_context.Prefers.ToList());
         }
 
-        // GET api/<StoreController>/5
-        [HttpGet("getByIDPrefer/{id}")]
-        public Prefer GetById(String id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Prefer>> GetById(String id)
         {
-            var Prefers = _context.Prefers.ToList();
-            var Prefer = Prefers.FirstOrDefault(x => x.Id == id);
-            if (Prefer == null)
+            var element = await _context.Prefers.FindAsync(id);
+            if (element == null)
             {
-                return null;
+                return NotFound();
             }
-            //if (casher.Status == false)
-            //{
-            //    return null;
-            //}
-            return Prefer;
+
+            return element;
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            return NoContent();
+        }
+
+        [HttpPost("")]
+        public async Task<ActionResult<Prefer>> Post(Prefer element)
+        {
+            _context.Prefers.Add(element);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetList), new { id = element.Id }, element);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(string id, Prefer element)
+        {
+            if (!id.Equals(element.Id))
+            {
+                return BadRequest();
+            }
+            _context.Entry(element).State = EntityState.Modified;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ElementExist(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return NoContent();
+        }
+
+        private bool ElementExist(string id)
+        {
+            return _context.Prefers.Any(e => e.Id == id);
         }
     }
 }

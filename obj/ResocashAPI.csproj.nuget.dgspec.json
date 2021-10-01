@@ -1,25 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "Z:\\Semester7\\SWD\\ResocashAPI\\ResocashAPI.csproj": {}
+    "E:\\git\\ResocashAPI\\ResocashAPI.csproj": {}
   },
   "projects": {
-    "Z:\\Semester7\\SWD\\ResocashAPI\\ResocashAPI.csproj": {
+    "E:\\git\\ResocashAPI\\ResocashAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Z:\\Semester7\\SWD\\ResocashAPI\\ResocashAPI.csproj",
+        "projectUniqueName": "E:\\git\\ResocashAPI\\ResocashAPI.csproj",
         "projectName": "ResocashAPI",
-        "projectPath": "Z:\\Semester7\\SWD\\ResocashAPI\\ResocashAPI.csproj",
-        "packagesPath": "C:\\Users\\winnh\\.nuget\\packages\\",
-        "outputPath": "Z:\\Semester7\\SWD\\ResocashAPI\\obj\\",
+        "projectPath": "E:\\git\\ResocashAPI\\ResocashAPI.csproj",
+        "packagesPath": "C:\\Users\\killd\\.nuget\\packages\\",
+        "outputPath": "E:\\git\\ResocashAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\winnh\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\killd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
